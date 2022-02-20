@@ -12,7 +12,13 @@ const createInitialData = () => ({
 export const Journal = () => {
   const [data, setData] = useState<JournalData>([createInitialData()]);
 
+  const addRow = () => {
+    setData((prev) => [...prev, createInitialData()])
+  }
+
   return <>{
     data.map((d) => <Row data={d} update={() => {/* 一旦空の関数を渡してごまかす */}} />)
-  }</>
+  }
+  <button onClick={addRow}>行を追加</button>
+  </>
 }
