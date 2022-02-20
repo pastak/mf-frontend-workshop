@@ -3,6 +3,7 @@ import { Row } from "./Row";
 import { JournalData } from "./types/journal"
 
 const createInitialData = () => ({
+  id: crypto.randomUUID(),
   debitSubject: '',
   debitValue: 0,
   creditSubject: '',
