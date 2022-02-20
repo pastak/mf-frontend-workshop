@@ -1,24 +1,15 @@
-import { useState } from "react"
+import { useJournalData } from "./journal-data";
 import { Row } from "./Row";
-import { JournalData } from "./types/journal"
-
-const createInitialData = () => ({
-  id: crypto.randomUUID(),
-  debitSubject: '',
-  debitValue: 0,
-  creditSubject: '',
-  creditValue: 0,
-});
+import { JournalRow } from "./types/journal";
 
 export const Journal = () => {
-  const [data, setData] = useState<JournalData>([createInitialData()]);
-
-  const addRow = () => {
-    setData((prev) => [...prev, createInitialData()])
-  }
+  const {data, updateDataById, addRow} = useJournalData();
 
   return <>{
-    data.map((d) => <Row key={d.id} data={d} update={() => {/* 一旦空の関数を渡してごまかす */}} />)
+    data.map((d) => {
+      const update = (_data: Partial<JournalRow>) => updateDataById(d.id, _data)
+      return <Row key={d.id} data={d} update={update} />
+    })
   }
   <button onClick={addRow}>行を追加</button>
   </>
