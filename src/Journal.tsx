@@ -18,7 +18,7 @@ export const Journal = () => {
   }
 
   return <>{
-    data.map((d) => <Row data={d} update={() => {/* 一旦空の関数を渡してごまかす */}} />)
+    data.map((d) => <Row key={d.id} data={d} update={() => {/* 一旦空の関数を渡してごまかす */}} />)
   }
   <button onClick={addRow}>行を追加</button>
   </>
