@@ -6,7 +6,7 @@ type RowProps = Readonly<{
 }>
 export const Row: React.VFC<RowProps> = () => {
 
-  return <div>
+  return <div role="row">
     <select>{/* ここに課目が並ぶ */}</select>
     <input type='number' />
     <select>{/* ここに課目が並ぶ */}</select>
