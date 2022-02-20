@@ -1,5 +1,6 @@
 import { useJournalData } from "./journal-data";
 import { Row } from "./Row";
+import { Sum } from "./Sum";
 import { JournalRow } from "./types/journal";
 
 export const Journal = () => {
@@ -11,6 +12,7 @@ export const Journal = () => {
       return <Row key={d.id} data={d} update={update} />
     })
   }
+  <Sum data={data} />
   <button onClick={addRow}>行を追加</button>
   </>
 }
